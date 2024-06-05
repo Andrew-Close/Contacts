@@ -72,9 +72,9 @@ files:
   - name: src/contacts/ContactApp.java
     visible: true
     learner_created: true
-feedback_link: https://hyperskill.org/projects/43/stages/228/implement#comment
+feedback_link: https://hyperskill.org/learn/step/5324#comment
 status: Solved
 feedback:
   message: Congratulations!
   time: "Sat, 01 Jun 2024 18:03:45 UTC"
-record: -1
+record: 1

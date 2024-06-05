@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
@@ -10,6 +11,16 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Contacts (Java)/task" />
+            <option value="$PROJECT_DIR$/Contacts (Java)/task/build/classes/java" />
+            <option value="$PROJECT_DIR$/Contacts (Java)/task/build/generated/sources/annotationProcessor/java" />
+            <option value="$PROJECT_DIR$/Contacts (Java)/task/build/generated/sources/headers/java" />
+            <option value="$PROJECT_DIR$/Contacts (Java)/task/build/reports/tests" />
+            <option value="$PROJECT_DIR$/Contacts (Java)/task/build/test-results" />
+            <option value="$PROJECT_DIR$/Contacts (Java)/task/build/tmp" />
+            <option value="$PROJECT_DIR$/Topics/Match results/Extracting big numbers from a text" />
+            <option value="$PROJECT_DIR$/Topics/Match results/Find all passwords" />
+            <option value="$PROJECT_DIR$/Topics/Match results/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Match results/Wrong move" />
             <option value="$PROJECT_DIR$/util" />
           </set>
         </option>
