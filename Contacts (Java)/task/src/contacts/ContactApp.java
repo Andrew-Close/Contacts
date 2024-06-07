@@ -27,6 +27,23 @@ public class ContactApp implements Runnable {
         }
     }
 
+    /**
+     * An enum for keeping track of valid fields.
+     */
+    private enum Fields {
+        NAME("name"), SURNAME("surname"), NUMBER("number");
+
+        private final String field;
+
+        Fields(String field) {
+            this.field = field;
+        }
+
+        private String getField() {
+            return this.field;
+        }
+    }
+
     private static final List<Contact> CONTACTS = new ArrayList<>();
 
     @Override
@@ -103,12 +120,57 @@ public class ContactApp implements Runnable {
         }
     }
 
+    /**
+     * Edits one field of a record, both specified via user input.
+     */
     private void editRecord() {
+        if (CONTACTS.isEmpty()) {
+            System.out.println(NO_RECORDS_TO_EDIT);
+        } else {
+            listRecords();
+            System.out.print(SELECT_RECORD_QUERY);
+            int index = UserInput.getValidRecordSelection();
 
+            System.out.print(SELECT_FIELD_QUERY);
+            Fields field = UserInput.getValidField();
+
+            editField(index, field);
+            System.out.println(RECORD_UPDATED);
+        }
     }
 
-    private void countRecords() {
+    /**
+     * Edits the passed field of the contact of the passed index.
+     * @param index the index of the contact to edit
+     * @param field the field to edit
+     */
+    private void editField(int index, Fields field) {
+        Scanner scanner = new Scanner(System.in);
+        Contact contact = CONTACTS.get(index);
+        switch (field) {
+            case NAME:
+                System.out.print(ENTER_NAME_QUERY);
+                String name = scanner.nextLine();
+                contact.setName(name);
+                break;
+            case SURNAME:
+                System.out.print(ENTER_SURNAME_QUERY);
+                String surname = scanner.nextLine();
+                contact.setSurname(surname);
+                break;
+            case NUMBER:
+                System.out.print(ENTER_NUMBER_QUERY);
+                String number = scanner.nextLine();
+                contact.setPhoneNumber(number);
+                break;
+        }
+    }
 
+    /**
+     * Prints how many records there are in the contact list, even if there are no records.
+     */
+    private void countRecords() {
+        System.out.printf(COUNT_FORMAT + "%n", CONTACTS.size());
     }
 
     /**
@@ -141,7 +203,7 @@ public class ContactApp implements Runnable {
                         return action;
                     }
                 }
-                System.out.println(INVALID_ACTION_QUERY);
+                System.out.print(INVALID_ACTION_QUERY);
             }
         }
 
@@ -158,6 +220,23 @@ public class ContactApp implements Runnable {
                 } else {
                     return index;
                 }
+            }
+        }
+
+        /**
+         * Gets a valid field from user input using the fields enum to be used for editing records.
+         * @return the valid field from user input
+         */
+        private static Fields getValidField() {
+            Scanner scanner = new Scanner(System.in);
+            while (true) {
+                String possibleField = scanner.nextLine();
+                for (Fields field : Fields.values()) {
+                    if (possibleField.equals(field.getField())) {
+                        return field;
+                    }
+                }
+                System.out.print(INVALID_FIELD_QUERY);
             }
         }
     }
