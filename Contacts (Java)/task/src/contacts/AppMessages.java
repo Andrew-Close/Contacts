@@ -56,4 +56,6 @@ public class AppMessages {
     public static String INVALID_RECORD_SELECTION_QUERY = "Please enter a valid number within the size of the contact list: ";
     // For use with the executeAction method as the default switch branch
     public static String INVALID_PASSED_ACTION = "The passed action was invalid. The user input may have been correct, but the value which was used was not.";
+    // For use with the number setter in a contact object
+    public static String INVALID_NUMBER = "Wrong number format!";
 }
