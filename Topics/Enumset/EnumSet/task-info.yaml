@@ -1,0 +1,15 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: An interface
+  - text: A normal Java class
+  - text: An enum
+  - text: An abstract class
+files:
+  - name: src/Task.java
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/19794#comment
+status: Solved
+record: -1
+local_check: false

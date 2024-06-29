@@ -1,17 +1,17 @@
 package contacts;
 
 import static contacts.AppMessages.INVALID_NUMBER;
-import static contacts.ContactApp.checkPhoneNumber;
+import static contacts.PhoneNumberVerifier.checkPhoneNumber;
 
 /**
- * A class which holds information about a contact.
+ * Just putting the old contact class here in case I need it later
  */
-public class Contact {
+public class OldContact {
     private String name;
     private String surname;
     private String phoneNumber;
 
-    public Contact(String name, String surname, String phoneNumber) {
+    public OldContact(String name, String surname, String phoneNumber) {
         this.name = name;
         this.surname = surname;
         setPhoneNumber(phoneNumber);

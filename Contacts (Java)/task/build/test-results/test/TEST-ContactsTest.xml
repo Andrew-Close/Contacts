@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ContactsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-06-09T21:06:38" hostname="ACLOSECUSTOMPC" time="1.176">
+<testsuite name="ContactsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-06-23T18:29:05" hostname="ACLOSECUSTOMPC" time="1.363">
   <properties/>
-  <testcase name="start" classname="ContactsTest" time="1.176"/>
+  <testcase name="start" classname="ContactsTest" time="1.363"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 Enter action (add, remove, edit, count, list, exit): > exit

@@ -1,0 +1,15 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: When there are multiple families of related objects to create
+  - text: When there is only one type of object to create
+  - text: When the client needs to create objects directly
+  - text: When objects need to be created in a specific order
+files:
+  - name: src/Task.java
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/26181#comment
+status: Solved
+record: -1
+local_check: false

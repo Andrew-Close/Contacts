@@ -1,0 +1,14 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: It will not throw an error
+  - text: 'Compile Time '
+  - text: Runtime
+files:
+  - name: src/Task.java
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/19797#comment
+status: Solved
+record: -1
+local_check: false
