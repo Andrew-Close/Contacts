@@ -15,16 +15,10 @@ files:
   - name: src/contacts/ContactApp.java
     visible: true
     learner_created: true
-  - name: src/contacts/PhoneNumberVerifier.java
-    visible: true
-    learner_created: true
   - name: src/contacts/types/Person.java
     visible: true
     learner_created: true
   - name: src/contacts/types/Organization.java
-    visible: true
-    learner_created: true
-  - name: src/contacts/OldContact.java
     visible: true
     learner_created: true
   - name: src/contacts/types/ContactFactory.java
@@ -34,6 +28,12 @@ files:
     visible: true
     learner_created: true
   - name: src/contacts/types/OrganizationFactory.java
+    visible: true
+    learner_created: true
+  - name: src/contacts/OldContact.java
+    visible: true
+    learner_created: true
+  - name: src/contacts/PhoneNumberVerifier.java
     visible: true
     learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5326#comment
