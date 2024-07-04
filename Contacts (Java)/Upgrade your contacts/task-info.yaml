@@ -33,7 +33,13 @@ files:
   - name: src/contacts/OldContact.java
     visible: true
     learner_created: true
-  - name: src/contacts/PhoneNumberVerifier.java
+  - name: src/contacts/OrganizationContact.java
+    visible: true
+    learner_created: true
+  - name: src/contacts/PersonContact.java
+    visible: true
+    learner_created: true
+  - name: src/contacts/Contact.java
     visible: true
     learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5326#comment
