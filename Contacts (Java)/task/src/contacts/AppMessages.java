@@ -28,7 +28,8 @@ public class AppMessages {
     public static String ENTER_ADDRESS_QUERY = "Enter the address: ";
     public static String ENTER_INDEX_QUERY = "Enter index to show info: ";
     public static String SELECT_RECORD_QUERY = "Select a record: ";
-    public static String SELECT_PERSON_FIELD_QUERY = "Select a field (name, surname, number): ";
+    public static String SELECT_PERSON_FIELD_QUERY = "Select a field (name, surname, birth, gender, number): ";
+    public static String SELECT_ORGANIZATION_FIELD_QUERY = "Select a field (address, number): ";
 
     /*
     Errors
@@ -39,9 +40,9 @@ public class AppMessages {
     public static String NO_RECORDS_TO_EDIT = "No records to edit!";
     public static String NO_RECORDS_TO_LIST = "No records to list!";
     // For use with the getValidAction method
-    public static String INVALID_ACTION_QUERY = "Please enter a valid action (add, remove, edit, count, list, exit): ";
+    public static String INVALID_ACTION_QUERY = "Please enter a valid action (add, remove, edit, count, info, exit): ";
     // For use with the getValidField method
-    public static String INVALID_FIELD_QUERY = "Please enter a valid field (name, surname, number): ";
+    public static String INVALID_FIELD_QUERY = "Please enter a valid field: ";
     // For use with the getValidType method
     public static String INVALID_TYPE_QUERY = "Please enter a valid type (person, organization): ";
     // For use with the getValidRecordSelection method

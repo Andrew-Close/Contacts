@@ -43,19 +43,8 @@ files:
     visible: true
     learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5326#comment
-status: Failed
+status: Solved
 feedback:
-  message: "Wrong answer in test #6\n\nThis test should contain 3 actions: add, info,\
-    \ exit. You should separate your actions with an empty line.\n\nPlease find below\
-    \ the output of your program during this failed test.\nNote that the &#39;&gt;&#39;\
-    \ character indicates the beginning of the input line.\n\n---\n\nEnter action\
-    \ (add, remove, edit, count, list, exit): &gt; add\nEnter the name: &gt; person\n\
-    Enter the surname: &gt; John\nEnter the number: &gt; Smith\nThe record added.\n\
-    Enter action (add, remove, edit, count, list, exit): &gt; \nPlease enter a valid\
-    \ action (add, remove, edit, count, list, exit): &gt; \nPlease enter a valid action\
-    \ (add, remove, edit, count, list, exit): &gt; 123 456 789\nPlease enter a valid\
-    \ action (add, remove, edit, count, list, exit): &gt; info\nPlease enter a valid\
-    \ action (add, remove, edit, count, list, exit): &gt; 1\nPlease enter a valid\
-    \ action (add, remove, edit, count, list, exit): &gt; exit"
-  time: "Sun, 23 Jun 2024 18:28:40 UTC"
+  message: Congratulations!
+  time: "Tue, 09 Jul 2024 17:42:27 UTC"
 record: 3

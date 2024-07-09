@@ -13,6 +13,7 @@ public abstract class Contact {
     protected String phoneNumber;
     protected final LocalDateTime timeCreated;
     protected LocalDateTime timeLastEdit;
+    // Used to properly edit records, among other things
     protected final boolean isPerson;
 
     protected Contact(String phoneNumber, boolean isPerson) {
@@ -22,8 +23,14 @@ public abstract class Contact {
         this.timeLastEdit = LocalDateTime.now();
     }
 
+    /**
+     * Displays the information unique to the specific record.
+     */
     public abstract void showInfo();
 
+    /**
+     * Displays the information common to all records.
+     */
     protected void printCommonInfo() {
         System.out.println("Number: " + getPhoneNumber());
         System.out.println("Time created: " + this.timeCreated);
@@ -41,6 +48,7 @@ public abstract class Contact {
      * Returns if this contact has a valid phone number.
      * @return whether the contact has a valid phone number
      */
+    @Deprecated
     public boolean hasNumber() {
         return !"[no number]".equals(getPhoneNumber()) && !"".equals(getPhoneNumber());
     }

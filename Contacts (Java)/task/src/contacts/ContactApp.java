@@ -1,10 +1,7 @@
 package contacts;
 
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 import java.time.LocalDate;
 
 import static contacts.AppMessages.*;
@@ -34,7 +31,7 @@ public class ContactApp implements Runnable {
      * An enum for keeping track of valid fields.
      */
     private enum Fields {
-        NAME("name"), SURNAME("surname"), NUMBER("number");
+        NAME("name"), SURNAME("surname"), BIRTH("birth"), GENDER("gender"), ADDRESS("address"), NUMBER("number");
 
         private final String field;
 
@@ -53,7 +50,7 @@ public class ContactApp implements Runnable {
     private enum Types {
         PERSON("person"), ORGANIZATION("organization");
 
-        private String type;
+        private final String type;
 
         Types(String type) { this.type = type; }
 
@@ -68,7 +65,7 @@ public class ContactApp implements Runnable {
     private enum Genders {
         M("M"), F("F");
 
-        private String gender;
+        private final String gender;
 
         Genders(String gender) { this.gender = gender; }
 
@@ -85,6 +82,7 @@ public class ContactApp implements Runnable {
             System.out.print(MAIN_MENU_QUERY);
             Actions action = UserInput.getValidAction();
             executeAction(action);
+            System.out.println();
         }
     }
 
@@ -141,13 +139,12 @@ public class ContactApp implements Runnable {
             //Gender
             System.out.print(ENTER_GENDER_QUERY);
             Optional<Genders> gender = UserInput.getAndVerifyGender();
-            System.out.println();
 
             //Number
             System.out.print(ENTER_NUMBER_QUERY);
             String number = scanner.nextLine();
 
-            String stringBirthDate = birthDate.isPresent() ? birthDate.get().toString() : "[no data]";
+            String stringBirthDate = birthDate.map(LocalDate::toString).orElse("[no data]");
             String stringGender = gender.isPresent() ? gender.get().getGender() : "[no data]";
 
             CONTACTS.add(new PersonContact(number, name, surname, stringBirthDate, stringGender));
@@ -195,11 +192,19 @@ public class ContactApp implements Runnable {
             listRecords();
             System.out.print(SELECT_RECORD_QUERY);
             int index = UserInput.getValidRecordSelection();
+            Contact contact = CONTACTS.get(index);
 
-            System.out.print(SELECT_PERSON_FIELD_QUERY);
-            Fields field = UserInput.getValidField();
+            Fields field;
+            if (contact.isPerson()) {
+                System.out.print(SELECT_PERSON_FIELD_QUERY);
+                field = UserInput.getValidField(Types.PERSON);
+            } else {
+                System.out.print(SELECT_ORGANIZATION_FIELD_QUERY);
+                field = UserInput.getValidField(Types.ORGANIZATION);
+            }
 
             editField(index, field);
+            contact.updateLastEditTime();
             System.out.println(RECORD_UPDATED);
         }
     }
@@ -212,16 +217,57 @@ public class ContactApp implements Runnable {
     private void editField(int index, Fields field) {
         Scanner scanner = new Scanner(System.in);
         Contact contact = CONTACTS.get(index);
+        PersonContact person = null;
+        OrganizationContact organization = null;
+        if (contact.isPerson()) {
+            person = (PersonContact) contact;
+        } else {
+            organization = (OrganizationContact) contact;
+        }
+        // For all cases, sets the new value, modifies the local object first (person or organization object),
+        // then sets the record in the contacts list to the local object.
         switch (field) {
             case NAME:
                 System.out.print(ENTER_NAME_QUERY);
                 String name = scanner.nextLine();
-                contact.setName(name);
+                if (person != null) {
+                    person.setName(name);
+                }
+                CONTACTS.set(index, person);
                 break;
             case SURNAME:
                 System.out.print(ENTER_SURNAME_QUERY);
                 String surname = scanner.nextLine();
-                contact.setSurname(surname);
+                if (person != null) {
+                    person.setSurname(surname);
+                }
+                CONTACTS.set(index, person);
+                break;
+            case BIRTH:
+                System.out.print(ENTER_BIRTHDATE_QUERY);
+                Optional<LocalDate> birthDate = UserInput.getAndVerifyBirthDate();
+                String stringBirthDate = birthDate.map(LocalDate::toString).orElse("[no data]");
+                if (person != null) {
+                    person.setBirthDate(stringBirthDate);
+                }
+                CONTACTS.set(index, person);
+                break;
+            case GENDER:
+                System.out.print(ENTER_GENDER_QUERY);
+                Optional<Genders> gender = UserInput.getAndVerifyGender();
+                String stringGender = gender.map(Genders::getGender).orElse("[no data]");
+                if (person != null) {
+                    person.setGender(stringGender);
+                }
+                CONTACTS.set(index, person);
+                break;
+            case ADDRESS:
+                System.out.print(ENTER_ADDRESS_QUERY);
+                String address = scanner.nextLine();
+                if (organization != null) {
+                    organization.setAddress(address);
+                }
+                CONTACTS.set(index, organization);
                 break;
             case NUMBER:
                 System.out.print(ENTER_NUMBER_QUERY);
@@ -239,7 +285,8 @@ public class ContactApp implements Runnable {
     }
 
     /**
-     * Lists all records in the contact list, or states that there are no records to list.
+     * Lets the user view the info of one record of their choosing,
+     * including the timestamps of when it was created and last edited.
      */
     private void showRecordInfo() {
         if (CONTACTS.isEmpty()) {
@@ -253,6 +300,9 @@ public class ContactApp implements Runnable {
         }
     }
 
+    /**
+     * Lists all records.
+     */
     private void listRecords() {
         for (int i = 0; i < CONTACTS.size(); i++) {
             if (CONTACTS.get(i).isPerson()) {
@@ -305,21 +355,41 @@ public class ContactApp implements Runnable {
 
         /**
          * Gets a valid field from user input using the fields enum to be used for editing records.
+         * @param type which type of contact a field should be retrieved from.
+         *             Ex.
+         *             if PERSON is passed, then address is an invalid field.
+         *             If ORGANIZATION is passed, then only address and number are valid fields.
          * @return the valid field from user input
          */
-        private static Fields getValidField() {
+        private static Fields getValidField(Types type) {
             Scanner scanner = new Scanner(System.in);
             while (true) {
                 String possibleField = scanner.nextLine();
-                for (Fields field : Fields.values()) {
-                    if (possibleField.equalsIgnoreCase(field.getField())) {
-                        return field;
+                if  (type.equals(Types.PERSON)) {
+                    // Everything but address
+                    EnumSet<Fields> set = EnumSet.complementOf(EnumSet.of(Fields.ADDRESS));
+                    for (Fields field : set) {
+                        if (possibleField.equalsIgnoreCase(field.getField())) {
+                            return field;
+                        }
+                    }
+                } else {
+                    // Only address and number
+                    EnumSet<Fields> set = EnumSet.of(Fields.ADDRESS, Fields.NUMBER);
+                    for (Fields field : set) {
+                        if (possibleField.equalsIgnoreCase(field.getField())) {
+                            return field;
+                        }
                     }
                 }
                 System.out.print(INVALID_FIELD_QUERY);
             }
         }
 
+        /**
+         * Gets a valid type of contact from user input using the Types enum.
+         * @return the valid type from user input.
+         */
         private static Types getValidType() {
             Scanner scanner = new Scanner(System.in);
             while (true) {
@@ -333,6 +403,10 @@ public class ContactApp implements Runnable {
             }
         }
 
+        /**
+         * Gets a birthdate from user input. The date is verified but returned even if it is invalid.
+         * @return the birthdate, valid or not
+         */
         private static Optional<LocalDate> getAndVerifyBirthDate() {
             Scanner scanner = new Scanner(System.in);
             String possibleDate = scanner.nextLine();
@@ -344,6 +418,11 @@ public class ContactApp implements Runnable {
             }
         }
 
+        /**
+         * Gets a gender from user input using the Genders enum.
+         * The gender is verified but returned even if it is invalid.
+         * @return the gender, valid or not
+         */
         private static Optional<Genders> getAndVerifyGender() {
             Scanner scanner = new Scanner(System.in);
             String possibleGender = scanner.nextLine();

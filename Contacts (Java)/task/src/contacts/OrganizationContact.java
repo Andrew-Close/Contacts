@@ -21,10 +21,6 @@ public class OrganizationContact extends Contact {
         return organizationName;
     }
 
-    public void setOrganizationName(String organizationName) {
-        this.organizationName = organizationName;
-    }
-
     public String getAddress() {
         return address;
     }
