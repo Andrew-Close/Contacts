@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ContactsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-07-09T17:42:27" hostname="ACLOSECUSTOMPC" time="0.466">
+<testsuite name="ContactsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-07-09T17:49:36" hostname="ACLOSECUSTOMPC" time="0.429">
   <properties/>
-  <testcase name="start" classname="ContactsTest" time="0.466"/>
+  <testcase name="start" classname="ContactsTest" time="0.429"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 Enter action (add, remove, edit, count, info, exit): > exit
@@ -38,7 +38,8 @@ Enter the surname: > Smith
 Enter the birth date: > 
 Bad birth date!
 Enter the gender (M, F): > 
-Bad gender!Enter the number: > 123 456 789
+Bad gender!
+Enter the number: > 123 456 789
 The record added.
 
 Enter action (add, remove, edit, count, info, exit): > count
@@ -54,7 +55,8 @@ Enter the surname: > Smith
 Enter the birth date: > 
 Bad birth date!
 Enter the gender (M, F): > 
-Bad gender!Enter the number: > 123 456 789
+Bad gender!
+Enter the number: > 123 456 789
 The record added.
 
 Enter action (add, remove, edit, count, info, exit): > info
@@ -65,8 +67,8 @@ Surname: Smith
 Birth date: [no data]
 Gender: [no data]
 Number: 123 456 789
-Time created: 2024-07-09T13:42:27.488269600
-Time last edit: 2024-07-09T13:42:27.488269600
+Time created: 2024-07-09T13:49:36.388133800
+Time last edit: 2024-07-09T13:49:36.388133800
 
 Enter action (add, remove, edit, count, info, exit): > exit
 ?[1;31m
@@ -84,8 +86,8 @@ Enter index to show info: > 1
 Organization name: Pizza Shop
 Address: Wall St. 1
 Number: +0 (123) 456-789-9999
-Time created: 2024-07-09T13:42:27.519268500
-Time last edit: 2024-07-09T13:42:27.519268500
+Time created: 2024-07-09T13:49:36.417134900
+Time last edit: 2024-07-09T13:49:36.417134900
 
 Enter action (add, remove, edit, count, info, exit): > exit
 ?[1;31m
@@ -97,7 +99,8 @@ Enter the surname: > Smith
 Enter the birth date: > 
 Bad birth date!
 Enter the gender (M, F): > 
-Bad gender!Enter the number: > 123 456 789
+Bad gender!
+Enter the number: > 123 456 789
 The record added.
 
 Enter action (add, remove, edit, count, info, exit): > edit
@@ -115,8 +118,8 @@ Surname: Smith
 Birth date: [no data]
 Gender: M
 Number: 123 456 789
-Time created: 2024-07-09T13:42:27.547275200
-Time last edit: 2024-07-09T13:42:27.557272600
+Time created: 2024-07-09T13:49:36.448137800
+Time last edit: 2024-07-09T13:49:36.459134300
 
 Enter action (add, remove, edit, count, info, exit): > exit
 ?[1;31m
@@ -128,7 +131,8 @@ Enter the surname: > Smith2
 Enter the birth date: > 
 Bad birth date!
 Enter the gender (M, F): > 
-Bad gender!Enter the number: > 123 456 789
+Bad gender!
+Enter the number: > 123 456 789
 The record added.
 
 Enter action (add, remove, edit, count, info, exit): > edit
@@ -146,8 +150,8 @@ Surname: Smith2
 Birth date: [no data]
 Gender: [no data]
 Number: 123 456 789
-Time created: 2024-07-09T13:42:27.591271900
-Time last edit: 2024-07-09T13:42:27.599269200
+Time created: 2024-07-09T13:49:36.494135
+Time last edit: 2024-07-09T13:49:36.503139500
 
 Enter action (add, remove, edit, count, info, exit): > exit
 ?[1;31m
@@ -159,7 +163,8 @@ Enter the surname: > Smith2
 Enter the birth date: > 
 Bad birth date!
 Enter the gender (M, F): > 
-Bad gender!Enter the number: > 123 456 789
+Bad gender!
+Enter the number: > 123 456 789
 The record added.
 
 Enter action (add, remove, edit, count, info, exit): > edit
@@ -177,8 +182,8 @@ Surname: Smith2
 Birth date: [no data]
 Gender: [no data]
 Number: 321 654 978
-Time created: 2024-07-09T13:42:27.635269900
-Time last edit: 2024-07-09T13:42:27.643269600
+Time created: 2024-07-09T13:49:36.535135900
+Time last edit: 2024-07-09T13:49:36.544135300
 
 Enter action (add, remove, edit, count, info, exit): > exit
 ?[1;31m
@@ -203,8 +208,8 @@ Enter index to show info: > 1
 Organization name: Pizza Shop
 Address: Wall St 2
 Number: +0 (123) 456-789-9999
-Time created: 2024-07-09T13:42:27.667268500
-Time last edit: 2024-07-09T13:42:27.675300500
+Time created: 2024-07-09T13:49:36.565135800
+Time last edit: 2024-07-09T13:49:36.571134300
 
 Enter action (add, remove, edit, count, info, exit): > exit
 ?[1;31m
@@ -229,8 +234,8 @@ Enter index to show info: > 1
 Organization name: Pizza Shop
 Address: Wall St. 1
 Number: +0 (123) 456-789-12345
-Time created: 2024-07-09T13:42:27.705271700
-Time last edit: 2024-07-09T13:42:27.713272700
+Time created: 2024-07-09T13:49:36.595133600
+Time last edit: 2024-07-09T13:49:36.602134700
 
 Enter action (add, remove, edit, count, info, exit): > exit
 ]]></system-out>
