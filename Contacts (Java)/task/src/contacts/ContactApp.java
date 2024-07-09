@@ -139,6 +139,7 @@ public class ContactApp implements Runnable {
             //Gender
             System.out.print(ENTER_GENDER_QUERY);
             Optional<Genders> gender = UserInput.getAndVerifyGender();
+            System.out.println();
 
             //Number
             System.out.print(ENTER_NUMBER_QUERY);
