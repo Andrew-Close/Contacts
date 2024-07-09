@@ -17,7 +17,7 @@ public class AppMessages {
     Queries
     (messages that ask for user input)
      */
-    public static String MAIN_MENU_QUERY = "Enter action (add, remove, edit, count, list, exit): ";
+    public static String MAIN_MENU_QUERY = "Enter action (add, remove, edit, count, info, exit): ";
     public static String ENTER_NAME_QUERY = "Enter the name: ";
     public static String ENTER_SURNAME_QUERY = "Enter the surname: ";
     public static String ENTER_NUMBER_QUERY = "Enter the number: ";
@@ -26,8 +26,9 @@ public class AppMessages {
     public static String ENTER_GENDER_QUERY = "Enter the gender (M, F): ";
     public static String ENTER_ORGNAME_QUERY = "Enter the organization name: ";
     public static String ENTER_ADDRESS_QUERY = "Enter the address: ";
+    public static String ENTER_INDEX_QUERY = "Enter index to show info: ";
     public static String SELECT_RECORD_QUERY = "Select a record: ";
-    public static String SELECT_FIELD_QUERY = "Select a field (name, surname, number): ";
+    public static String SELECT_PERSON_FIELD_QUERY = "Select a field (name, surname, number): ";
 
     /*
     Errors
