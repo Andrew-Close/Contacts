@@ -17,7 +17,7 @@ public class ContactApp implements Runnable {
      * An enum for keeping track of valid actions.
      */
     private enum Actions {
-        ADD("add"), REMOVE("remove"), EDIT("edit"), COUNT("count"), LIST("list"), EXIT("exit");
+        ADD("add"), REMOVE("remove"), EDIT("edit"), COUNT("count"), INFO("info"), EXIT("exit");
 
         private final String action;
 
@@ -106,8 +106,8 @@ public class ContactApp implements Runnable {
             case COUNT:
                 countRecords();
                 break;
-            case LIST:
-                listRecords();
+            case INFO:
+                showRecordInfo();
                 break;
             case EXIT:
                 System.exit(0);
@@ -122,7 +122,7 @@ public class ContactApp implements Runnable {
     private void addRecord() {
         Scanner scanner = new Scanner(System.in);
         //Type
-        System.out.println(ENTER_TYPE_QUERY);
+        System.out.print(ENTER_TYPE_QUERY);
         Types type = UserInput.getValidType();
         //Person
         if (type.equals(Types.PERSON)) {
@@ -135,12 +135,13 @@ public class ContactApp implements Runnable {
             String surname = scanner.nextLine();
 
             //Birthdate
-            System.out.println(ENTER_BIRTHDATE_QUERY);
+            System.out.print(ENTER_BIRTHDATE_QUERY);
             Optional<LocalDate> birthDate = UserInput.getAndVerifyBirthDate();
 
             //Gender
-            System.out.println(ENTER_GENDER_QUERY);
+            System.out.print(ENTER_GENDER_QUERY);
             Optional<Genders> gender = UserInput.getAndVerifyGender();
+            System.out.println();
 
             //Number
             System.out.print(ENTER_NUMBER_QUERY);
@@ -153,11 +154,11 @@ public class ContactApp implements Runnable {
         //Organization
         } else {
             //Organization name
-            System.out.println(ENTER_ORGNAME_QUERY);
+            System.out.print(ENTER_ORGNAME_QUERY);
             String organizationName = scanner.nextLine();
 
             //Address
-            System.out.println(ENTER_ADDRESS_QUERY);
+            System.out.print(ENTER_ADDRESS_QUERY);
             String address = scanner.nextLine();
 
             //Number
@@ -195,7 +196,7 @@ public class ContactApp implements Runnable {
             System.out.print(SELECT_RECORD_QUERY);
             int index = UserInput.getValidRecordSelection();
 
-            System.out.print(SELECT_FIELD_QUERY);
+            System.out.print(SELECT_PERSON_FIELD_QUERY);
             Fields field = UserInput.getValidField();
 
             editField(index, field);
@@ -240,12 +241,27 @@ public class ContactApp implements Runnable {
     /**
      * Lists all records in the contact list, or states that there are no records to list.
      */
-    private void listRecords() {
+    private void showRecordInfo() {
         if (CONTACTS.isEmpty()) {
             System.out.println(NO_RECORDS_TO_LIST);
         } else {
-            // Format is Index + 1. Name Surname, Phone number
-            CONTACTS.forEach(x -> System.out.println(CONTACTS.indexOf(x) + 1 + ". " + x.getName() + " " + x.getSurname() + ", " + x.getPhoneNumber()));
+            listRecords();
+
+            System.out.print(ENTER_INDEX_QUERY);
+            int index = UserInput.getValidRecordSelection();
+            CONTACTS.get(index).showInfo();
+        }
+    }
+
+    private void listRecords() {
+        for (int i = 0; i < CONTACTS.size(); i++) {
+            if (CONTACTS.get(i).isPerson()) {
+                PersonContact contact = (PersonContact) CONTACTS.get(i);
+                System.out.println(i + 1 + ". " + contact.getName() + " " + contact.getSurname());
+            } else {
+                OrganizationContact contact = (OrganizationContact) CONTACTS.get(i);
+                System.out.println(i + 1 + ". " + contact.getOrganizationName());
+            }
         }
     }
 

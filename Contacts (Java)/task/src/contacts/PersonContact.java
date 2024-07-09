@@ -11,11 +11,20 @@ public class PersonContact extends Contact {
     private String gender;
 
     public PersonContact(String phoneNumber, String name, String surname, String birthDate, String gender) {
-        super(phoneNumber);
+        super(phoneNumber, true);
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
         this.gender = gender;
+    }
+
+    @Override
+    public void showInfo() {
+        System.out.println("Name: " + getName());
+        System.out.println("Surname: " + getSurname());
+        System.out.println("Birth date: " + getBirthDate());
+        System.out.println("Gender: " + getGender());
+        printCommonInfo();
     }
 
     public String getName() {
